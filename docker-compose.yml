@@ -11,4 +11,4 @@ services:
     - "0.0.0.0:9876:9876" # karma
     - "0.0.0.0:35729:35729" # livereload
     volumes:
-    - ".:/app:rw" # mapping to local ionic project directory
+    - ".:/app" # mapping to local ionic project directory
