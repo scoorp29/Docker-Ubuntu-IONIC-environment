@@ -230,6 +230,12 @@ GULP_VERSION: ${GULP_VERSION:-none}\n\
 " >> /image.config && \
 cat /image.config
 
+# -----------------------------------------------------------------------------
+# WORKDIR is the generic /app folder. All volume mounts of the actual project
+# code need to be put into /app.
+# -----------------------------------------------------------------------------
+RUN mkdir -p ~/app
+WORKDIR ~/app
 
 # -----------------------------------------------------------------------------
 # Generate an Ionic default app (do this with root user, since we will not
@@ -237,8 +243,10 @@ cat /image.config
 # and add and build android platform
 # -----------------------------------------------------------------------------
 RUN \
+  cd / && \
   ionic config set -g backend legacy && \
   ionic start app blank --type ionic-angular --no-deps --no-link --no-git && \
+  cd /app && \
   ${PACKAGE_MANAGER} install && \
   ionic cordova platform add android --no-resources && \
   ionic cordova build android
