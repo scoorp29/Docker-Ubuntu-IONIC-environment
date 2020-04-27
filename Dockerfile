@@ -244,7 +244,12 @@ WORKDIR /app
 # -----------------------------------------------------------------------------
 RUN \
   cd / && \
-  ionic start app blank --type ionic-angular --no-deps --no-link --no-git && \
+  ionic start myapp blank --type ionic-angular --no-deps --no-link --no-git && \
+  cd /app && \
+  ${PACKAGE_MANAGER} install && \
+  ionic cordova platform add android --no-resources && \
+  ionic cordova build android
+
 
 # -----------------------------------------------------------------------------
 # Just in case you are installing from private git repositories, enable git
