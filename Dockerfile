@@ -234,6 +234,7 @@ cat /image.config
 # WORKDIR is the generic /app folder. All volume mounts of the actual project
 # code need to be put into /app.
 # -----------------------------------------------------------------------------
+RUN mkdir -p /app
 WORKDIR /app
 
 # -----------------------------------------------------------------------------
