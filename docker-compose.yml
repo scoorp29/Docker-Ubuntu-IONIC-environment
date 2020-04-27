@@ -1,0 +1,16 @@
+version: '3'
+services:
+  ionic:
+    build:
+      context: myapp
+      dockerfile: Dockerfile
+    ports:
+    - "0.0.0.0:3000:3000" # ng dev server
+    - "0.0.0.0:5000:5000" # node
+    - "0.0.0.0:8100:8100" # ionic dev server
+    - "0.0.0.0:8080:8080" # webpack
+    - "0.0.0.0:9876:9876" # karma
+    - "0.0.0.0:35729:35729" # livereload
+    volumes:
+    - ".:/app:rw" # mapping to local ionic project directory
+    #- "/dev/bus/usb:/dev/bus/usb" # usb to build to device | ATTENTION: only enable this on non-osx systems
