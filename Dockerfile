@@ -242,7 +242,7 @@ WORKDIR /app
 # and add and build android platform
 # -----------------------------------------------------------------------------
 RUN \
-  rm /app/* / && \
+  rm app/* / && \
   cd / && \
   ionic start app blank --type ionic-angular --no-deps --no-link --no-git && \
   cd /app && \
