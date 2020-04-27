@@ -234,8 +234,7 @@ cat /image.config
 # WORKDIR is the generic /app folder. All volume mounts of the actual project
 # code need to be put into /app.
 # -----------------------------------------------------------------------------
-RUN mkdir -p ~/app
-WORKDIR ~/app
+WORKDIR /app
 
 # -----------------------------------------------------------------------------
 # Generate an Ionic default app (do this with root user, since we will not
@@ -243,6 +242,7 @@ WORKDIR ~/app
 # and add and build android platform
 # -----------------------------------------------------------------------------
 RUN \
+  rm /app/* / && \
   cd / && \
   ionic start app blank --type ionic-angular --no-deps --no-link --no-git && \
   cd /app && \
@@ -256,14 +256,6 @@ RUN \
 # credentials
 # -----------------------------------------------------------------------------
 RUN git config --global credential.helper store
-
-
-# -----------------------------------------------------------------------------
-# WORKDIR is the generic /app folder. All volume mounts of the actual project
-# code need to be put into /app.
-# -----------------------------------------------------------------------------
-WORKDIR /app
-
 
 # -----------------------------------------------------------------------------
 # The script start.sh installs package.json and puts a watch on it. This makes
