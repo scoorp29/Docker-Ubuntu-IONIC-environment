@@ -231,13 +231,6 @@ GULP_VERSION: ${GULP_VERSION:-none}\n\
 cat /image.config
 
 # -----------------------------------------------------------------------------
-# WORKDIR is the generic /app folder. All volume mounts of the actual project
-# code need to be put into /app.
-# -----------------------------------------------------------------------------
-RUN mkdir -p /app
-WORKDIR /app
-
-# -----------------------------------------------------------------------------
 # Generate an Ionic default app (do this with root user, since we will not
 # have permissions for /app otherwise), install the dependencies
 # and add and build android platform
@@ -245,7 +238,7 @@ WORKDIR /app
 RUN \
   chown ${USER}:${USER} /app && chmod 777 /app && \
   cd / && \
-  ionic start myapp blank --type ionic-angular --no-deps --no-link --no-git && \
+  ionic start app blank --type ionic-angular --no-deps --no-link --no-git && \
   cd /app && \
   ${PACKAGE_MANAGER} install && \
   ionic cordova platform add android --no-resources && \
@@ -257,6 +250,12 @@ RUN \
 # credentials
 # -----------------------------------------------------------------------------
 RUN git config --global credential.helper store
+
+# -----------------------------------------------------------------------------
+# WORKDIR is the generic /app folder. All volume mounts of the actual project
+# code need to be put into /app.
+# -----------------------------------------------------------------------------
+WORKDIR /app
 
 # -----------------------------------------------------------------------------
 # The script start.sh installs package.json and puts a watch on it. This makes
