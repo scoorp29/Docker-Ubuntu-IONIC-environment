@@ -235,7 +235,7 @@ cat /image.config
 # and add and build android platform
 # -----------------------------------------------------------------------------
 
-RUN ionic start "My App" --type=angular
+RUN ionic init "My App" --type=angular
 
 # -----------------------------------------------------------------------------
 # Just in case you are installing from private git repositories, enable git
