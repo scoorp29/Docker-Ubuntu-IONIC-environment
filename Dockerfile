@@ -202,10 +202,10 @@ ENV GULP_VERSION ${GULP_VERSION}
 RUN \
   if [ "${PACKAGE_MANAGER}" != "yarn" ]; then \
     export PACKAGE_MANAGER="npm" && \
-    sudo npm install -g cordova@"${CORDOVA_VERSION}" && \
-    if [ -n "${IONIC_VERSION}" ]; then sudo npm install -g ionic@"${IONIC_VERSION}"; fi && \
-    if [ -n "${TYPESCRIPT_VERSION}" ]; then sudo npm install -g typescript@"${TYPESCRIPT_VERSION}"; fi && \
-    if [ -n "${GULP_VERSION}" ]; then sudo npm install -g gulp@"${GULP_VERSION}"; fi \
+    npm install -g cordova@"${CORDOVA_VERSION}" && \
+    if [ -n "${IONIC_VERSION}" ]; then npm install -g ionic@"${IONIC_VERSION}"; fi && \
+    if [ -n "${TYPESCRIPT_VERSION}" ]; then npm install -g typescript@"${TYPESCRIPT_VERSION}"; fi && \
+    if [ -n "${GULP_VERSION}" ]; then npm install -g gulp@"${GULP_VERSION}"; fi \
   else \
     yarn global add cordova@"${CORDOVA_VERSION}" && \
     if [ -n "${IONIC_VERSION}" ]; then yarn global add ionic@"${IONIC_VERSION}"; fi && \
