@@ -172,6 +172,14 @@ RUN \
 COPY start.sh /start.sh
 RUN chown ${USER}:${USER} /start.sh && chmod 777 /start.sh
 
+
+# -----------------------------------------------------------------------------
+# Switch the user of this image only now, because previous commands need to be 
+# run as root
+# -----------------------------------------------------------------------------
+USER ${USER}
+
+
 # -----------------------------------------------------------------------------
 # Install Global node modules
 # -----------------------------------------------------------------------------
@@ -228,8 +236,9 @@ cat /image.config
 # and add and build android platform
 # -----------------------------------------------------------------------------
 RUN \
+
   cd / && \
-  ionic start app blank --type ionic-angular --no-deps --no-link --no-git && \
+  sudo ionic start app blank --type ionic-angular --no-deps --no-link --no-git && \
   cd /app && \
   ${PACKAGE_MANAGER} install && \
   ionic cordova platform add android --no-resources && \
