@@ -165,8 +165,8 @@ RUN \
   chmod 777 /usr/local/bin
   #&& chown ${USER}:${USER} ${ANDROID_HOME} -R
 
-RUN echo "user ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/user && \
-    chmod 0440 /etc/sudoers.d/user
+RUN echo "${USER} ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/${USER} && \
+    chmod 0440 /etc/sudoers.d/${USER}
 
 # -----------------------------------------------------------------------------
 # Copy start.sh and set permissions 
