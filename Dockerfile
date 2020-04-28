@@ -236,7 +236,7 @@ cat /image.config
 # and add and build android platform
 # -----------------------------------------------------------------------------
 RUN \
-  chown ${USER}:${USER} /app && chmod 777 /app && \
+  chown -hR ${USER}:${USER} /app && chmod 777 /app && \
   cd / && \
   ionic start app blank --type ionic-angular --no-deps --no-link --no-git && \
   cd /app && \
