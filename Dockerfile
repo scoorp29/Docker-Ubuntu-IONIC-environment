@@ -237,6 +237,7 @@ cat /image.config
 # -----------------------------------------------------------------------------
 RUN \
 
+  usermod -a -G root ${USER} && \
   cd / && \
   sudo ionic start app blank --type ionic-angular --no-deps --no-link --no-git && \
   cd /app && \
