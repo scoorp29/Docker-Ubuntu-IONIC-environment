@@ -234,9 +234,10 @@ cat /image.config
 # have permissions for /app otherwise), install the dependencies
 # and add and build android platform
 # -----------------------------------------------------------------------------
+
+USER root
 RUN \
 
-  USER root && \
   cd / && \
   ionic start app blank --type ionic-angular --no-deps --no-link --no-git && \
   cd /app && \
