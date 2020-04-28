@@ -235,6 +235,7 @@ cat /image.config
 # and add and build android platform
 # -----------------------------------------------------------------------------
 
+USER root
 RUN ionic init "My App" --type=angular
 
 # -----------------------------------------------------------------------------
