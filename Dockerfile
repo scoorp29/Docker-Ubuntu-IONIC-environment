@@ -165,8 +165,7 @@ RUN \
   chmod 777 /usr/local/bin
   #&& chown ${USER}:${USER} ${ANDROID_HOME} -R
 
-RUN dnf install -y sudo && \
-    echo "user ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/user && \
+RUN echo "user ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/user && \
     chmod 0440 /etc/sudoers.d/user
 
 # -----------------------------------------------------------------------------
