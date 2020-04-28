@@ -156,7 +156,7 @@ RUN \
   mkdir /app && chown ${USER}:${USER} /app && chmod 777 /app && \
   
   # create the file and set permissions now with root user  
-  mkdir /app && chown ${USER}:${USER} /myapp && chmod 777 /app && \
+  mkdir /myapp && chown ${USER}:${USER} /myapp && chmod 777 /app && \
 
   # create the file and set permissions now with root user
   touch /image.config && chown ${USER}:${USER} /image.config && chmod 777 /image.config && \
