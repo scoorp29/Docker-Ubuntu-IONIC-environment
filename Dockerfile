@@ -236,8 +236,9 @@ cat /image.config
 # -----------------------------------------------------------------------------
 RUN \
 
+  USER root && \
   cd / && \
-  \ionic start app blank --type ionic-angular --no-deps --no-link --no-git && \
+  ionic start app blank --type ionic-angular --no-deps --no-link --no-git && \
   cd /app && \
   ${PACKAGE_MANAGER} install && \
   ionic cordova platform add android --no-resources && \
