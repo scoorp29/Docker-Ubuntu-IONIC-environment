@@ -235,6 +235,7 @@ cat /image.config
 # and add and build android platform
 # -----------------------------------------------------------------------------
 
+RUN ionic start
 
 # -----------------------------------------------------------------------------
 # Just in case you are installing from private git repositories, enable git
