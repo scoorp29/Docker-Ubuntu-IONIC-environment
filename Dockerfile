@@ -165,9 +165,6 @@ RUN \
   chmod 777 /usr/local/bin
   #&& chown ${USER}:${USER} ${ANDROID_HOME} -R
 
-RUN echo "${USER} ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/${USER} && \
-    chmod 0440 /etc/sudoers.d/${USER}
-
 # -----------------------------------------------------------------------------
 # Copy start.sh and set permissions 
 # -----------------------------------------------------------------------------
@@ -240,7 +237,7 @@ cat /image.config
 RUN \
 
   cd / && \
-  sudo ionic start app blank --type ionic-angular --no-deps --no-link --no-git && \
+  \ionic start app blank --type ionic-angular --no-deps --no-link --no-git && \
   cd /app && \
   ${PACKAGE_MANAGER} install && \
   ionic cordova platform add android --no-resources && \
